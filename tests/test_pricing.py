@@ -1,6 +1,6 @@
 """Tests for deterministic pricing functions."""
 
-from pricing import DEFAULT_ASSUMPTIONS, derive_values, estimate_quantity
+from app.estimator.pricing import DEFAULT_ASSUMPTIONS, derive_values, estimate_quantity
 
 
 def test_blank_label_zero_colors_uses_blank_rates() -> None:

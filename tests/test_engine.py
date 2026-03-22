@@ -2,8 +2,8 @@
 
 import pytest
 
-from engine import build_estimate
-from schemas import EstimateInput
+from app.estimator.engine import build_estimate
+from app.estimator.schemas import EstimateInput
 
 
 def _base_payload() -> dict:
@@ -82,9 +82,9 @@ def test_missing_optional_pricing_fields_are_flagged() -> None:
     assert "MISSING_LAM_PRICE_MSI_FOR_LAMINATED_JOB" in result.review_flags
 
 
-def test_invalid_dimensions_raise_value_error() -> None:
+def test_invalid_dimensions_raise_validation_error() -> None:
     data = _base_payload()
     data["inches_across"] = 0
 
     with pytest.raises(ValueError):
-        build_estimate(EstimateInput(**data))
+        EstimateInput(**data)
